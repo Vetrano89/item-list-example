@@ -9,6 +9,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### How to run the app
 
+Make sure you are [running the express backend for this app](https://github.com/Vetrano89/item-list-example-express).
+
 Probably not necessary to change but this is what I'm currently running:\
 Npm version: v6.14.13\
 Node version: v14.17.0
