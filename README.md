@@ -1,12 +1,3 @@
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
 ### How to run the app
 
 Make sure you are [running the express backend for this app](https://github.com/Vetrano89/item-list-example-express).
@@ -16,6 +7,8 @@ Npm version: v6.14.13\
 Node version: v14.17.0
 
 `npm start`
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### Overview
 
