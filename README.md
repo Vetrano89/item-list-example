@@ -6,6 +6,7 @@ Probably not necessary to change but this is what I'm currently running:\
 Npm version: v6.14.13\
 Node version: v14.17.0
 
+`npm intall`
 `npm start`
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
