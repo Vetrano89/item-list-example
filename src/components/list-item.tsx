@@ -1,6 +1,5 @@
 import { ReactElement, FC, ReactNode, MouseEventHandler } from "react";
 import styled from 'styled-components'
-import { ListItem as IListItem } from "../types";
 
 const StyledListItem = styled.li`
   font-size: 14px;
@@ -33,7 +32,7 @@ const ListItem: FC<Props> = ({ children, disabled, handleRemoveListItem }): Reac
       <ListItemFlexContainer>
         {children}
         {!disabled && (
-          <StyledButton onClick={handleRemoveListItem} disabled={disabled}>
+          <StyledButton onClick={(e) => handleRemoveListItem(e)} disabled={disabled}>
             x
           </StyledButton>
         )}

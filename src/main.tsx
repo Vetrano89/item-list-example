@@ -1,9 +1,9 @@
-import { ReactElement, FC, ReactNode, useState, SetStateAction, Dispatch, ChangeEvent } from "react";
+import { ReactElement, FC, useState, ChangeEvent } from "react";
 import styled from 'styled-components'
 import ListInputControl from "./components/list-input-control";
 
 const InputsFlexContainer = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 80px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -27,8 +27,9 @@ const StyledPropInput = styled.input`
 const Label: FC = (): ReactElement => {
   const [label, setLabel] = useState('Top 3 priorities');
   const [placeholder, setPlaceholder] = useState('Enter your priorities here');
-  const [maxItems, setMaxItems] = useState(3);
+  const [maxItems, setMaxItems] = useState('3');
   const [disabled, setDisabled] = useState(false);
+  const [required, setRequired] = useState(false);
 
   const onChangeLabel = (e: ChangeEvent<HTMLInputElement>) => {
     setLabel(e.target.value);
@@ -39,15 +40,22 @@ const Label: FC = (): ReactElement => {
   }
 
   const onChangeMaxItems = (e: ChangeEvent<HTMLInputElement>) => {
-    setMaxItems(parseInt(e.target.value));
+    setMaxItems(e.target.value);
   }
 
   const onChangeDisabled = () => {
     setDisabled(!disabled);
   }
 
+  const onChangeRequired = () => {
+    setRequired(!required);
+  }
+
   return (
     <div>
+      <div style={{ marginBottom: '10px' }}>
+        Admin Panel
+      </div>
       <InputsFlexContainer>
         <LabelInputFlexContainer>
           Label
@@ -65,13 +73,18 @@ const Label: FC = (): ReactElement => {
           Disabled
           <StyledPropInput type="checkbox" checked={disabled} onChange={onChangeDisabled} />
         </LabelInputFlexContainer>
+        <LabelInputFlexContainer>
+          Required
+          <StyledPropInput type="checkbox" checked={required} onChange={onChangeRequired} />
+        </LabelInputFlexContainer>
       </InputsFlexContainer>
       <div>
         <ListInputControl
           label={label}
-          placeholder={placeholder || 'This is the default placeholder'}
+          placeholder={placeholder}
           disabled={disabled}
-          maxItems={maxItems}
+          maxItems={parseInt(maxItems)}
+          required={required}
         />
       </div>
     </div >

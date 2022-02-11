@@ -1,11 +1,11 @@
-import { ReactElement, FC, ReactNode } from "react";
+import { ReactElement, FC, MouseEvent } from "react";
 import styled from 'styled-components'
 import { ListItem as IListItem } from '../types';
 import ListItem from './list-item';
 
 interface Props {
   disabled: boolean;
-  handleRemoveListItem: (i: number) => void;
+  handleRemoveListItem: (e: MouseEvent<HTMLButtonElement>, i: number) => void;
   listItems: IListItem[];
 }
 
@@ -24,7 +24,7 @@ const List: FC<Props> = ({ listItems, handleRemoveListItem, disabled }): ReactEl
   return (
     <StyledList>
       {listItems.map((listItem, i) => (
-        <ListItem key={listItem.text + i} disabled={disabled} handleRemoveListItem={() => handleRemoveListItem(i)}>
+        <ListItem key={listItem.text + i} disabled={disabled} handleRemoveListItem={(e) => handleRemoveListItem(e, i)}>
           {listItem.text}
         </ListItem>
       ))}
