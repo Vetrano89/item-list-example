@@ -2,26 +2,31 @@ import { ReactElement, FC, KeyboardEvent } from "react";
 import styled from 'styled-components'
 
 const StyledInput = styled.input`
-  outline: 0;
   border-width: 0 0 2px;
-  border-color: blue;
+  border-color: blue;  
+  outline: 0;
   width: 100%;
 `
 
 interface Props {
-  placeholder: string;
+  disabled: boolean;
   onEnter: (e: KeyboardEvent<HTMLInputElement>) => void;
+  placeholder: string;
 }
 
-const Input: FC<Props> = ({ placeholder, onEnter }): ReactElement => {
+const Input: FC<Props> = ({ placeholder, onEnter, disabled }): ReactElement => {
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (disabled) {
+      return;
+    }
+
     if (e.key === 'Enter') {
       onEnter(e);
     }
   }
 
   return (
-    <StyledInput placeholder={placeholder} onKeyDown={handleKeyDown} />
+    <StyledInput disabled={disabled} placeholder={placeholder} onKeyDown={handleKeyDown} />
   );
 };
 

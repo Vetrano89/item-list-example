@@ -1,17 +1,12 @@
 import './App.css';
 import Input from './components/input';
 import ListInputControl from './components/list-input-control';
+import Main from './main';
 
 function App() {
   return (
     <div className="App">
-      <div>
-        <ListInputControl
-          label="Top 3 priorities"
-          placeholder="Enter your priorities here"
-          disabled={false}
-        />
-      </div>
+      <Main />
     </div>
   );
 }

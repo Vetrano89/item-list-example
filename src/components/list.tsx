@@ -1,28 +1,35 @@
-import React, { ReactElement, FC, ReactNode } from "react";
+import { ReactElement, FC, ReactNode } from "react";
 import styled from 'styled-components'
 import { ListItem as IListItem } from '../types';
-
-const StyledLabel = styled.div`
-  color: blue;
-  font-size: 10px;
-`
+import ListItem from './list-item';
 
 interface Props {
-    children: ReactNode
+  disabled: boolean;
+  handleRemoveListItem: (i: number) => void;
+  listItems: IListItem[];
 }
 
-const List: FC<Props> = ({ listItems: IListemItems[] }): ReactElement => {
-    if (!listItems.length) {
-        return null;
-    }
-    return (
-        {!!listItems.length && listItems.map((listItem) => {
-            <ListItem>
-                {listItem.text}
-            </ListItem>
-        })
-}
-    );
+const StyledList = styled.ul`
+  box-sizing: border-box;
+  padding-left: 20px;
+  text-align: left;
+  width: 100%;
+`;
+
+const List: FC<Props> = ({ listItems, handleRemoveListItem, disabled }): ReactElement | null => {
+  if (!listItems.length) {
+    return null;
+  }
+
+  return (
+    <StyledList>
+      {listItems.map((listItem, i) => (
+        <ListItem key={listItem.text + i} disabled={disabled} handleRemoveListItem={() => handleRemoveListItem(i)}>
+          {listItem.text}
+        </ListItem>
+      ))}
+    </StyledList>
+  );
 };
 
 export default List;
