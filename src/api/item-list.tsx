@@ -36,7 +36,7 @@ export async function deleteItem(itemIndex: number): Promise<ApiReturn> {
 }
 
 export async function getItems(): Promise<ApiReturn> {
-  const response = await fetch('http://localhost:9000/items')
+  const response = await fetch('http://localhost:9000/items');
 
   return {
     data: await response.json(),
